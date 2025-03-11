@@ -6,34 +6,16 @@
 
 const calculator = document.querySelector('.calculator')
 const keys = calculator.querySelector('.calculator__keys')
+const display = calculator.querySelector('.calculator__display')
 
 keys.addEventListener('click', e => {
-    const key = e.target
-    const action = key.dataset.action
+    if (e.target.matches('button')){    
+    console.log(e.target.textContent)
 
-    if (!action) {
-        console.log('number key :', key)
     }
-    if (
-        action === 'add' ||
-        action === 'subtract' ||
-        action === 'multiply' ||
-        action === 'divide'
-      ) {
-        console.log('operator key :', action)
-    }
-    if (action === 'decimal') {
-        console.log('decimal key!')
-      }
-      
-      if (action === 'clear') {
-        console.log('clear key!')
-      }
-      
-      if (action === 'calculate') {
-        console.log('equal key!')
-    }
-  }
+}
 )
+
+
 
 
