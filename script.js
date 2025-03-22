@@ -11,11 +11,8 @@ const display = calculator.querySelector('.calculator__display')
 keys.addEventListener('click', e => {
     if (e.target.matches('button')){    
     console.log(e.target.textContent)
-
+    //let valeurRecup = display.textContent
+    document.querySelector('.calculator__display').textContent = e.target.textContent
     }
 }
 )
-
-
-
-
