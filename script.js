@@ -8,6 +8,7 @@ const calculator = document.querySelector('.calculator')
 const keys = calculator.querySelector('.calculator__keys')
 const display = calculator.querySelector('.calculator__display')
 let valeurRecup=0
+let valeur = 0
 let operatorRecup = "add"
 
 keys.addEventListener('click', e => {
@@ -17,15 +18,27 @@ keys.addEventListener('click', e => {
         console.log(e.target.dataset.action)
         operatorRecup = e.target.dataset.action
         display.textContent = e.target.textContent
+        valeurRecup = valeur
+        valeur = 0
     }
-    else{
-        valeur = Number(e.target.textContent)
-        if(operatorRecup=="add"){valeurRecup = valeurRecup + valeur
+    else if (e.target.classList.contains("key--equal")){
+        if(operatorRecup=="add"){
+            console.log('oui')
+            valeurRecup = valeurRecup + valeur
         }
         if(operatorRecup=="divide"){valeurRecup = valeurRecup / valeur}
         if(operatorRecup=="multiply"){valeurRecup = valeurRecup * valeur}
         if(operatorRecup=="substract"){valeurRecup = valeurRecup - valeur}
         document.querySelector('.calculator__display').textContent = valeurRecup
+        valeur = valeurRecup
+        valeurRecup=0
+    }
+    else{
+
+        if(valeur == 0) {
+            valeur = Number(e.target.textContent)}
+        else{valeur = Number(String(valeur)+e.target.textContent)}
+        display.textContent = valeur
     }
     }
 }
